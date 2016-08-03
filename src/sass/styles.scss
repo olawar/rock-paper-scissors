@@ -1,0 +1,23 @@
+body {
+  color: #fff;
+  font-size: 24px;
+}
+
+.game-wrapper {
+  width: 600px;
+  padding: 60px 30px;
+  margin: 20px auto;
+  background-color: #f55f44;
+  border-radius: 15px;
+  text-align: center;
+}
+
+[data-game] {
+  label {
+    padding-right: 20px;
+  }
+}
+
+[data-winner] {
+  font-size: 36px;
+}
