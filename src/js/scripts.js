@@ -10,22 +10,32 @@ String.prototype.capitalize = function() {
 // game settings
 _gameOptions = {
     1: { name : "rock",
-         wins: 3,
+         beats: 3,
          claim: "crushes" },
     2:  { name : "paper",
-         wins: 1,
+         beats: 1,
          claim: "covers" },
     3: { name : "scissors",
-         wins: 2,
+         beats: 2,
          claim: "cuts" }
 }
 
 // the game
 var app = {
     init: function() {
-        this.game();
+        this.gameSetup();
+        this.gamePlay();
     },
-    game: function() {
+
+    gameSetup: function() {
+
+        $('[data-game]').find('input').each(function(index) {
+            $(this).val(index + 1);
+        });
+
+    },
+
+    gamePlay: function() {
 
         $('[data-game]').on('change', function(){
             var userChoice = parseInt($(':checked').val(), 10),
@@ -34,7 +44,7 @@ var app = {
             if (userChoice === computerChoice) {
                 $('[data-winner]').text("It's a tie!");
             }
-            else if (_gameOptions[userChoice].wins === computerChoice) {
+            else if (_gameOptions[userChoice].beats === computerChoice) {
                 $('[data-winner]').text(_gameOptions[userChoice].name.capitalize() + " " + _gameOptions[userChoice].claim + " " + _gameOptions[computerChoice].name + ". You win!");
             }
             else {
